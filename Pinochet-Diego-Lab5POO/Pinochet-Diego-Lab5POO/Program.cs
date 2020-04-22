@@ -16,6 +16,7 @@ namespace Pinochet_Diego_Lab5POO
             Server server = new Server(database);
             MailSender mailSender = new MailSender();
             SMSSender smsSender = new SMSSender();
+            User user = new User();
 
 
             //Suscribir los que escuchan los eventos.
@@ -27,7 +28,10 @@ namespace Pinochet_Diego_Lab5POO
             server.PasswordChanged += mailSender.OnPasswordChanged;
             //3- Suscribir OnCambiadaContrasena de smsSender para que escuche el evento CambiadaContrasena enviado por servidor
             server.PasswordChanged += smsSender.OnPasswordChanged;
-
+            //4- Suscribir evento EmailSent a user
+            mailSender.EmailSent += user.OnEmailSent;
+            //5- Suscribir evento EmailVerified a user
+            user.EmailVerified += server.OnEmailVerified;
 
             // Controla la ejecucion mientras el usuario no quiera salir
             bool exec = true;

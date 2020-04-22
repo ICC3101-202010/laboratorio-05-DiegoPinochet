@@ -73,6 +73,7 @@ namespace Pinochet_Diego_Lab5POO
             {
                 // Disparamos el evento
                 OnRegistered(usr, psswd, verificationlink: verificationLink, email: email);
+                
             }
             else
             {
@@ -120,6 +121,11 @@ namespace Pinochet_Diego_Lab5POO
                 result += rndom;
             }
             return "http://pluscorporation.com/verificar-correo.php?=" + usr + "_" + result;
+        }
+        
+        public void OnEmailVerified(object source, EventArgs empty)
+        {
+            Console.WriteLine("Se verifico el correo correctamente.");
         }
     }
 }
