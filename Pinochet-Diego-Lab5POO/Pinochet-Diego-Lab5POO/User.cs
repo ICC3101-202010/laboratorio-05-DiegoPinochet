@@ -11,7 +11,13 @@ namespace Pinochet_Diego_Lab5POO
         public void OnEmailSent(object source, EventArgs empty)
         {
             Console.WriteLine("Correo de verificación ha sido enviado");
-            OnEmailVerified();
+            Console.WriteLine("¿Quiere verificar su correo? (Si/No)");
+            string sino = Console.ReadLine();
+            if (sino == "Si")
+            {
+                OnEmailVerified();
+            }
+            
         }
 
         public delegate void EmailVerifyEvetHandler(object source, EventArgs empty);
@@ -21,13 +27,10 @@ namespace Pinochet_Diego_Lab5POO
         {
             if(EmailVerified != null)
             {
-                Console.WriteLine("¿Quiere verificar su correo? (Si/No)");
-                string sino = Console.ReadLine();
-                if (sino == "Si")
-                {
-                    EmailVerified(this, new EventArgs());
-                }
+                EmailVerified(this, new EventArgs());
+                
             }
         }
     }
 }
+
